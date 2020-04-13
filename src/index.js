@@ -1,17 +1,35 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+/* Asi se hacia en la manera antigua
+ const element = document.createElement('h1')
+element.innerText ='Hola React'
+const container = document.getElementById('root')
+container.appendChild(element) */
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+import React from 'react'
+import ReactDOM from 'react-dom'
+//Creo un objeto con 2 termino
+const user = { 
+    firstName: 'Carlos',
+    lastName: 'Sandoval',
+    avatar: 'https://www.beahero.gg/wp-content/uploads/2019/09/mobpsychothumb.jpg'
+  };
+// creo una funcion para llamar los terminos del objeto
+function formatName(user) { 
+    return user.firstName + ' ' + user.lastName;
+  }
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+  function condicional(user) {
+      if(user){
+        return <h1>Hola {formatName(user)} </h1>
+      }
+      return <h1>Hola estraño</h1>
+  }
+
+const element = (
+    <div>
+        <h1>{condicional(user)}</h1>
+        <img src={user.avatar} />;
+    </div>
+)
+const container = document.getElementById('root')
+
+ReactDOM.render(element, container)
